@@ -1,70 +1,496 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    scroll-behavior: smooth;
-    font-family: "Poppins", sans-serif;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+<style>
+:root{
+    --bg-color:#080808;
+    --second-bg-color:#131313;
+    --text-color:#ffffff;
+    --main-color:#dcb1c2;
 }
 
-:root {
-    --bg-color: #080808;
-    --second-bg-color: #131313;
-    --text-color: white;
-    --main-color: #dcb1c2;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
 }
 
-html{
-    font-size: 62.5%;
-    overflow-x: hidden;
-}
 body{
-    background: var(--bg-color);
-    color: var(--text-color);
+    background:var(--bg-color);
+    color:var(--text-color);
+    overflow-x:hidden;
 }
-.header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 4rem 12% 4rem;
-    background: black rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 5;
+
+body::before{
+    content:'';
+    position:fixed;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle,var(--main-color) 0%, transparent 70%);
+    opacity:.08;
+    right:-300px;
+    top:-200px;
+    z-index:-1;
 }
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+}
+
+/* NAVBAR */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(20px);
+    background:rgba(8,8,8,.85);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.3rem 0;
+}
+
 .logo{
-    font-size: 3rem;
-    color: var(--text-color);
-    font-weight: 800;
-    cursor: pointer;
-    transition: 0.3s ease;
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
-.logo:hover{
-    transform: scale(1.1);
+
+.logo img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid var(--main-color);
 }
-.logo span{
-    text-shadow: 0 0 25px var(--main-color);
+
+.logo-info h3{
+    font-size:1rem;
 }
-.navbar a{
-    font-size: 1.8rem;
-    color: var(--text-color);
-    margin-left: 4rem;
-    font-weight: 500;
-    transition: 0.3s ease;
-    border-bottom: 3px solid transparent;
+
+.logo-info span{
+    color:#aaa;
+    font-size:.8rem;
 }
-.navbar a:hover,
-.navbar a.active{
-    color: var(--main-color);
-    border-bottom: 3px solid var(--main-color);
+
+nav a{
+    text-decoration:none;
+    color:white;
+    margin-left:30px;
+    transition:.3s;
 }
-#menu-icon{
-    font-size: 3.6rem;
-    color: var(--main-color)
-    display: none;
+
+nav a:hover{
+    color:var(--main-color);
 }
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:40px;
+}
+
+.hero-wrapper{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:40px;
+    width:100%;
+}
+
+.hero-content{
+    background:var(--second-bg-color);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:35px;
+    padding:70px;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-content::before{
+    content:'';
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:var(--main-color);
+    filter:blur(150px);
+    opacity:.09;
+    top:-150px;
+    right:-150px;
+}
+
+.subtitle{
+    color:var(--main-color);
+    margin-bottom:10px;
+    letter-spacing:2px;
+    font-size:.9rem;
+}
+
+.hero-content h1{
+    font-size:5rem;
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero-content h1 span{
+    color:var(--main-color);
+}
+
+.hero-content p{
+    color:#c7c7c7;
+    max-width:650px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.buttons{
+    display:flex;
+    gap:20px;
+}
+
+.btn{
+    padding:14px 30px;
+    border-radius:50px;
+    text-decoration:none;
+    transition:.4s;
+    font-weight:600;
+}
+
+.btn-primary{
+    background:var(--main-color);
+    color:black;
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px);
+}
+
+.btn-secondary{
+    border:1px solid var(--main-color);
+    color:var(--main-color);
+}
+
+.btn-secondary:hover{
+    background:var(--main-color);
+    color:black;
+}
+
+/* RIGHT SIDE IMAGE */
+
+.hero-image{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.hero-image::before{
+    content:'';
+    width:500px;
+    height:500px;
+    background:var(--main-color);
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.15;
+    position:absolute;
+}
+
+.hero-image img{
+    width:100%;
+    max-width:550px;
+    object-fit:cover;
+    border-radius:30px;
+    z-index:2;
+}
+
+/* FLOATING CARDS */
+
+.floating{
+    position:absolute;
+    z-index:5;
+    backdrop-filter:blur(20px);
+    background:rgba(19,19,19,.8);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+}
+
+.card-1{
+    top:30px;
+    left:-20px;
+    padding:25px;
+}
+
+.card-2{
+    bottom:50px;
+    right:-15px;
+    padding:25px;
+}
+
+.card-3{
+    bottom:-20px;
+    left:50px;
+    padding:20px;
+}
+
+.floating h3{
+    color:var(--main-color);
+    font-size:2rem;
+}
+
+.floating p{
+    color:#bbb;
+}
+
+/* ABOUT GRID */
+
+.about{
+    padding:100px 0;
+}
+
+.section-title{
+    font-size:3rem;
+    margin-bottom:40px;
+}
+
+.section-title span{
+    color:var(--main-color);
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:25px;
+}
+
+.card{
+    background:var(--second-bg-color);
+    border-radius:25px;
+    padding:30px;
+    border:1px solid rgba(255,255,255,.05);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card i{
+    font-size:2.5rem;
+    color:var(--main-color);
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#bdbdbd;
+    line-height:1.8;
+}
+
+/* SOCIAL */
+
+.socials{
+    margin-top:25px;
+    display:flex;
+    gap:15px;
+}
+
+.socials a{
+    width:45px;
+    height:45px;
+    background:var(--main-color);
+    color:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    text-decoration:none;
+    font-size:1.3rem;
+}
+
+@media(max-width:1000px){
+
+.hero-wrapper{
+    grid-template-columns:1fr;
+}
+
+.hero-content{
+    padding:45px;
+}
+
+.hero-content h1{
+    font-size:3.5rem;
+}
+
+.about-grid{
+    grid-template-columns:1fr;
+}
+}
+
+@media(max-width:600px){
+
+nav{
+    display:none;
+}
+
+.hero-content h1{
+    font-size:2.8rem;
+}
+
+.hero-content{
+    padding:30px;
+}
+
+.buttons{
+    flex-direction:column;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container navbar">
+
+<div class="logo">
+<img src="user.jpeg" alt="">
+<div class="logo-info">
+<h3>Your Name</h3>
+<span>Portfolio Website</span>
+</div>
+</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Projects</a>
+<a href="#">Services</a>
+<a href="#">Contact</a>
+</nav>
+
+</div>
+</header>
+
+<section class="hero">
+<div class="container">
+
+<div class="hero-wrapper">
+
+<div class="hero-content">
+
+<div class="subtitle">
+WELCOME TO MY PORTFOLIO
+</div>
+
+<h1>Hi, I'm <span>Your Name</span></h1>
+
+<p>
+Creative developer and designer passionate about building
+beautiful digital experiences, modern web applications,
+and user-focused interfaces.
+</p>
+
+<div class="buttons">
+<a href="#" class="btn btn-primary">Hire Me</a>
+<a href="#" class="btn btn-secondary">View Projects</a>
+</div>
+
+<div class="socials">
+<a href="#"><i class='bx bxl-facebook'></i></a>
+<a href="#"><i class='bx bxl-instagram'></i></a>
+<a href="#"><i class='bx bxl-github'></i></a>
+<a href="#"><i class='bx bxl-linkedin'></i></a>
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<div class="floating card-1">
+<h3>15+</h3>
+<p>Projects</p>
+</div>
+
+<div class="floating card-2">
+<h3>3+</h3>
+<p>Years Experience</p>
+</div>
+
+<div class="floating card-3">
+<h3>100%</h3>
+<p>Passion</p>
+</div>
+
+<img src="user.jpeg" alt="Profile">
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section class="about">
+<div class="container">
+
+<h2 class="section-title">
+About <span>Me</span>
+</h2>
+
+<div class="about-grid">
+
+<div class="card">
+<i class='bx bx-user'></i>
+<h3>Who Am I</h3>
+<p>
+I'm a developer who enjoys building modern applications,
+designing intuitive interfaces, and creating seamless user
+experiences. My goal is to combine elegant design with
+functional development.
+</p>
+</div>
+
+<div class="card">
+<i class='bx bx-code-alt'></i>
+<h3>Frontend</h3>
+<p>
+HTML, CSS, JavaScript, React, Tailwind, UI/UX Design.
+</p>
+</div>
+
+<div class="card">
+<i class='bx bx-rocket'></i>
+<h3>Goals</h3>
+<p>
+Creating impactful products and growing continuously
+as a developer.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+</body>
+</html>
